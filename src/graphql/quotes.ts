@@ -61,17 +61,11 @@ const SUBSCRIPTION_QUOTE_DELETED = gql`
   }
 `;
 
-export class Quote {
-  source = '';
-  quote = '';
-  RowKey = '';
-};
-
 const QUOTE_CREATED = {
   document: SUBSCRIPTION_QUOTE_CREATED,
   updateQuery(current, { subscriptionData }) {
-    let quotes: Quote[] = current.listQuotes;
-    const newQuote: Quote = subscriptionData.data.quoteCreated;
+    let quotes = current.listQuotes;
+    const newQuote = subscriptionData.data.quoteCreated;
     return { listQuotes: [...quotes, newQuote] };
   },
 };
@@ -79,8 +73,8 @@ const QUOTE_CREATED = {
 const QUOTE_UPDATED = {
   document: SUBSCRIPTION_QUOTE_UPDATED,
   updateQuery(current, { subscriptionData }) {
-    let quotes: Quote[] = current.listQuotes;
-    const updatedQuote: Quote = subscriptionData.data.quoteUpdated;
+    let quotes = current.listQuotes;
+    const updatedQuote = subscriptionData.data.quoteUpdated;
     const index = quotes.findIndex(q => q.RowKey === updatedQuote.RowKey);
     if (index >= 0) {
       Vue.set(quotes, index, updatedQuote);
@@ -92,8 +86,8 @@ const QUOTE_UPDATED = {
 const QUOTE_DELETED = {
   document: SUBSCRIPTION_QUOTE_DELETED,
   updateQuery(current, { subscriptionData }) {
-    let quotes: Quote[] = current.listQuotes;
-    const deletedQuote: Quote = subscriptionData.data.quoteDeleted;
+    let quotes = current.listQuotes;
+    const deletedQuote = subscriptionData.data.quoteDeleted;
     return { listQuotes: quotes.filter(q => q.RowKey !== deletedQuote.RowKey) };
   },
 }
