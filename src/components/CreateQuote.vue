@@ -17,14 +17,14 @@
       </div>
     </div>
     <div class="form-input">
-      <button @click="submitForm">Add Quote</button>
+      <button @click="submitForm" :disabled="!source || !quote">Add Quote</button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import { GQL, Quote } from '../graphql/quotes';
+import { GQL } from '../graphql/quotes';
 
 export default Vue.extend({
   name: 'CreateQuote',
@@ -35,7 +35,7 @@ export default Vue.extend({
   methods: {
     async submitForm() {
       console.log('submitForm()');
-      const res = await this.$apollo.mutate<Quote>({
+      const res = await this.$apollo.mutate({
         mutation: GQL.MUTATION.CREATE_QUOTE,
         variables: {
           input: {

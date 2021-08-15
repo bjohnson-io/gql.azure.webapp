@@ -15,7 +15,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { GQL, Quote } from '../graphql/quotes';
+import { GQL } from '../graphql/quotes';
 
 export default Vue.extend({
   name: 'Quotes',
