@@ -9,7 +9,8 @@ Vue.use(VueApollo)
 const AUTH_TOKEN = 'apollo-token'
 
 // Host[:Port] of the GraphQL API
-const HOST = process.env.NODE_ENV !== 'production' ? 'gql-api.azurewebsites.net' : 'localhost:3000';
+// const HOST = process.env.NODE_ENV !== 'production' ? 'gql-api.azurewebsites.net' : 'localhost:3000';
+const HOST = 'gql-api.azurewebsites.net';
 
 // Http endpoint
 const httpEndpoint = `https://${HOST}/graphql`;
