@@ -1,3 +1,6 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import Vue from 'vue';
 import VModal from 'vue-js-modal';
 import App from './App.vue';
