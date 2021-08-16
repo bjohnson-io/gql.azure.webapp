@@ -1,6 +1,10 @@
 import Vue from 'vue';
 import VueApollo from 'vue-apollo';
 import { createApolloClient, restartWebsockets } from 'vue-cli-plugin-apollo/graphql-client';
+import dotenv from 'dotenv';
+
+// Load env variables
+dotenv.config();
 
 // Install the vue plugin
 Vue.use(VueApollo)
@@ -10,10 +14,10 @@ const AUTH_TOKEN = 'apollo-token'
 
 // Host[:Port] of the GraphQL API
 // const HOST = process.env.NODE_ENV !== 'production' ? 'gql-api.azurewebsites.net' : 'localhost:3000';
-const HOST = process.env.API_HOST || 'localhost:3000';
+const API_HOST = process.env.API_HOST || 'localhost:3000';
 
 // Http endpoint
-const httpEndpoint = `https://${HOST}/graphql`;
+const httpEndpoint = `https://${API_HOST}/graphql`;
 
 // Config
 const defaultOptions = {
@@ -21,7 +25,7 @@ const defaultOptions = {
   httpEndpoint,
   // You can use `wss` for secure connection (recommended in production)
   // Use `null` to disable subscriptions
-  wsEndpoint: `wss://${HOST}/graphql`,
+  wsEndpoint: `wss://${API_HOST}/graphql`,
   // LocalStorage token
   tokenName: AUTH_TOKEN,
   // Enable Automatic Query persisting with Apollo Engine
