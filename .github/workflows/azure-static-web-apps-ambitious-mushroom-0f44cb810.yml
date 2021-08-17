@@ -15,6 +15,11 @@ jobs:
         with:
           submodules: true
       - name: Build VueJS App
+        id: build
+        run: |
+          npm i -g yarn
+          yarn
+          yarn build
       - name: Deploy to Azure
         id: deploy
         uses: Azure/static-web-apps-deploy@v1
