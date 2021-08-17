@@ -14,7 +14,7 @@ const AUTH_TOKEN = 'apollo-token'
 
 // Host[:Port] of the GraphQL API
 // const HOST = process.env.NODE_ENV !== 'production' ? 'gql-api.azurewebsites.net' : 'localhost:3000';
-const API_HOST = process.env.API_HOST || 'localhost:3000';
+const API_HOST = process.env.API_HOST || 'gql-api.azurewebsites.net';
 
 // Http endpoint
 const httpEndpoint = `https://${API_HOST}/graphql`;
